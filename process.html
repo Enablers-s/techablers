@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How We Work — Techablers</title>
+<meta name="description" content="Eight transparent steps from idea to launch. Approve every stage and track every milestone." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="process">
+<script src="assets/js/layout.js"></script>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div data-aos="fade-up"><span class="section-tag"><i class="bi bi-diagram-3 me-1"></i> How We Work</span></div>
+      <h1 class="page-hero-title mt-3" data-aos="fade-up" data-aos-delay="80">A clear path<br /><span class="accent">from idea to launch.</span></h1>
+      <p class="page-hero-subtitle" data-aos="fade-up" data-aos-delay="160">Eight transparent steps. You sign off what you approve, track every milestone in your portal and always know what happens next.</p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <section class="section-py">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-tag"><i class="bi bi-signpost-2 me-1"></i> The Techablers Flow</span><br />
+        <h2 class="section-title mt-3">Eight steps.<br /><span class="gradient-accent">Zero surprises.</span></h2>
+      </div>
+      <div class="row g-4" id="steps"></div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center" data-aos="fade-up">
+      <div class="cta-eyebrow">Ready when you are</div>
+      <h2 class="cta-mega">Start with step one.<br />It's free.</h2>
+      <p class="cta-sub">Describe your project and get a tailored brief. No commitment, no pressure.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a class="btn-tx-white btn-magnetic" href="get-started.html">Start Your Brief <i class="bi bi-arrow-right ms-1"></i></a>
+        <a class="btn-tx-outline" href="contact.html">Talk to Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+(function () {
+  var steps = [
+    ['robot', 'Free AI Brief & Consultation', 'Start by chatting with our AI consultant or booking a quick call. It asks the right questions, captures your goals and turns a rough idea into a clear, structured brief, completely free.'],
+    ['file-earmark-text', 'Quote & Proposal', 'We send an itemised proposal with transparent pricing and a realistic timeline. You review and e-sign it online. Nothing moves forward until you approve the scope and price.'],
+    ['shield-lock', 'NDA + Requirements Spec', 'We sign a mutual NDA, then write a detailed Software Requirements Specification. You review and sign it, so the agreed scope is documented and everyone knows exactly what is being built.'],
+    ['credit-card', 'Deposit & Payment', 'A deposit reserves your team and kicks off the project. Pay securely by card, bank transfer or invoice, with the balance billed against milestones as work progresses.'],
+    ['kanban', 'Design & Build', 'We design and build in focused milestones. Track every task in your private client portal and talk to the team directly. Full visibility, every day.'],
+    ['display', 'Demo & Approval', 'At each milestone we walk you through a working demo. You give written approval before we move on, so the product always matches what you signed off.'],
+    ['rocket-takeoff', 'Go-Live', 'We handle deployment, final QA, performance and security checks, then launch. Source code, credentials and documentation are handed over in full. You own everything.'],
+    ['life-preserver', 'Support & Retainer', 'After launch we monitor, patch and improve. Continue on a monthly plan or retainer and keep us as your on-demand product and engineering team.']
+  ];
+  document.getElementById('steps').innerHTML = steps.map(function (s, i) {
+    return '<div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="' + (i % 4) * 80 + '"><div class="process-step h-100">' +
+      '<div class="process-step-num">0' + (i + 1) + '</div><div class="process-step-icon"><i class="bi bi-' + s[0] + '"></i></div>' +
+      '<h3 class="process-step-title">' + s[1] + '</h3><p class="process-step-desc">' + s[2] + '</p></div></div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

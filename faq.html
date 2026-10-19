@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FAQ — Techablers</title>
+<meta name="description" content="Straight answers about pricing, timelines, contracts, ownership and support." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="faq">
+<script src="assets/js/layout.js"></script>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div data-aos="fade-up"><span class="section-tag"><i class="bi bi-question-circle me-1"></i> Frequently Asked Questions</span></div>
+      <h1 class="page-hero-title mt-3" data-aos="fade-up" data-aos-delay="80">Everything you<br /><span class="accent">want to know.</span></h1>
+      <p class="page-hero-subtitle" data-aos="fade-up" data-aos-delay="160">Straight answers about pricing, timelines, contracts, ownership and support. No jargon, no fine-print surprises.</p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <section class="section-py">
+    <div class="container" style="max-width:880px">
+      <div class="accordion accordion-flush tx-faq" id="faqAcc"></div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center" data-aos="fade-up">
+      <div class="cta-eyebrow">Still have questions?</div>
+      <h2 class="cta-mega">Let's talk it<br />through together.</h2>
+      <p class="cta-sub">Free consultation. Honest answers. No commitment required.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a class="btn-tx-white btn-magnetic" href="contact.html">Get In Touch <i class="bi bi-arrow-right ms-1"></i></a>
+        <a class="btn-tx-outline" href="get-started.html">Start Your Brief</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+(function () {
+  var faq = [
+    ['How does your pricing work?', 'Every engagement starts with a free consultation, then we send an itemised quote so you see exactly what each deliverable costs, with no hidden fees. Smaller projects are fixed-price; larger or evolving projects are phased or run on a retainer.'],
+    ['How long does a typical project take?', 'Landing pages and small sites usually ship in 1–3 weeks, while custom web or mobile apps typically take 6–16 weeks depending on scope. Enterprise platforms are scoped in phases. We commit to a realistic timeline in writing.'],
+    ['Do you sign NDAs and provide a requirements spec?', 'Yes. We sign a mutual NDA before discussing anything sensitive, and write a detailed Software Requirements Specification for you to approve before development starts. It becomes the agreed scope for the project.'],
+    ['What are your payment terms?', 'Most projects start with a deposit (usually 30–50%) to reserve the team, with the balance billed against milestones or on completion. Monthly retainers and managed-IT packages are billed at the start of each month.'],
+    ['Do you provide ongoing support and maintenance?', 'Yes. Every project includes a post-launch support window, and you can continue on a monthly plan for updates, monitoring, security patches and small improvements.'],
+    ['Who owns the code and intellectual property?', 'You do. On final payment, all source code, designs and IP transfer to you in full. We hand over repositories, credentials and documentation so you are never dependent on us.'],
+    ['What technologies do you build with?', 'Modern, production-grade stacks: .NET, TypeScript, React, Next.js, Node.js, Python, Flutter and more, backed by PostgreSQL, SQL Server or MongoDB and deployed on AWS, Azure or Google Cloud. We pick what fits your project.'],
+    ['How many revisions do I get?', 'Each design and build milestone includes review rounds where you give feedback and we refine until it matches the approved scope. Reasonable revisions within scope are included; brand-new features are quoted separately.'],
+    ['How do we get started?', 'Start with the free AI brief or a quick call. We then send a proposal you can e-sign, set up the NDA and requirements spec, take the deposit and kick off, usually within a few days of your go-ahead.'],
+    ['Do you charge VAT?', 'Where applicable, VAT is added to your invoice based on your billing location and local rules. Your quote will show it clearly as a separate line.'],
+    ['Can we work with you on an ongoing retainer?', 'Yes. Many clients keep us on a monthly retainer as their on-demand product and engineering team: a reserved block of hours, priority turnaround and a team that already knows the codebase.'],
+    ['What if I don\'t have a tech team or a clear spec?', 'That is exactly who our managed-IT packages are for. We can act as your whole technology department, and the AI brief plus requirements process turns even a rough idea into a clear, costed plan.']
+  ];
+  document.getElementById('faqAcc').innerHTML = faq.map(function (f, i) {
+    return '<div class="accordion-item" data-aos="fade-up" data-aos-delay="' + Math.min(i, 5) * 40 + '"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq' + i + '" aria-expanded="false" aria-controls="faq' + i + '">' + TX.esc(f[0]) + '</button></h2>' +
+      '<div id="faq' + i + '" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">' + TX.esc(f[1]) + '</div></div></div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

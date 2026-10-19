@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pricing — Techablers</title>
+<meta name="description" content="Managed-IT packages or fixed project quotes. Every number itemised and approved by you up front." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="pricing">
+<script src="assets/js/layout.js"></script>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div data-aos="fade-up"><span class="section-tag"><i class="bi bi-cash-coin me-1"></i> Pricing</span></div>
+      <h1 class="page-hero-title mt-3" data-aos="fade-up" data-aos-delay="80">Honest pricing.<br /><span class="accent">No surprises.</span></h1>
+      <p class="page-hero-subtitle" data-aos="fade-up" data-aos-delay="160">Choose a managed-IT package and let us run your tech, or get a fixed project quote. Either way, every number is itemised and approved by you up front.</p>
+    </div>
+  </section>
+
+  <section class="founding-offer-section">
+    <div class="container">
+      <div class="founding-offer-card" data-aos="zoom-in">
+        <div class="founding-offer-badge"><i class="bi bi-stars me-1"></i> Founding Client Offer — limited</div>
+        <h2 class="founding-offer-title">50% off your first project</h2>
+        <p class="founding-offer-sub">We're hand-picking <strong>5 founding clients</strong> this month to grow our portfolio. Start a project before the deadline and get <strong>50% off your first build</strong>, and you <strong>pay nothing until you approve the working demo.</strong></p>
+        <div class="founding-offer-timer" data-countdown></div>
+        <br />
+        <ul class="founding-offer-perks">
+          <li><i class="bi bi-check-circle-fill"></i>50% off your first build</li>
+          <li><i class="bi bi-check-circle-fill"></i>Pay only when you approve the demo</li>
+          <li><i class="bi bi-check-circle-fill"></i>Money-back guarantee</li>
+          <li><i class="bi bi-check-circle-fill"></i>Locked-in founder rate on future work</li>
+        </ul>
+        <div class="founding-offer-actions">
+          <a class="btn-tx-white btn-magnetic" href="get-started.html">Claim your spot <i class="bi bi-arrow-right ms-1"></i></a>
+          <a class="btn-tx-outline" href="contact.html">See if you qualify</a>
+        </div>
+        <p class="founding-offer-fine">Applies to your first project. 5 spots per month. Offer ends <span data-offer-end></span>.</p>
+      </div>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <section class="packages-section">
+    <div class="container">
+      <div class="d-flex flex-column align-items-center text-center mb-5" data-aos="fade-up">
+        <span class="section-tag"><i class="bi bi-people me-1"></i> Managed IT Packages</span>
+        <h2 class="section-title mt-3">We'll be your<br /><span class="gradient-accent">entire tech team.</span></h2>
+        <p class="mt-3 section-lead">A fixed monthly plan covering strategy, build, security and support: your dedicated IT department without the headcount.</p>
+      </div>
+      <div class="row g-4 align-items-stretch" id="packageCards"></div>
+      <p class="text-center mt-4 pkg-note">Every package is tailored after a free consultation. No long-term lock-in: scale up or down as you grow.</p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <section class="section-py">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="section-tag"><i class="bi bi-rulers me-1"></i> Project-Based Pricing</span><br />
+          <h2 class="section-title mt-3 text-start">Just need one thing built?<br /><span class="gradient-accent">We price that too.</span></h2>
+          <p class="mt-4 mb-3">Not every business needs a monthly plan. For one-off builds we quote a fixed price based on scope, from simple landing pages to full enterprise platforms.</p>
+          <p class="mb-0">You get an itemised quote that you approve before anything starts. No lump sums, no surprises.</p>
+        </div>
+        <div class="col-lg-6">
+          <div class="row g-3">
+            <div class="col-sm-6" data-aos="fade-up"><div class="price-tier-card h-100"><div class="price-tier-icon"><i class="bi bi-window"></i></div><div class="price-tier-name">Landing Pages</div><div class="price-tier-price">1–2 weeks</div><p class="price-tier-desc">Fast, conversion-focused single pages and small marketing sites.</p></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="80"><div class="price-tier-card h-100"><div class="price-tier-icon"><i class="bi bi-laptop"></i></div><div class="price-tier-name">Websites &amp; Web Apps</div><div class="price-tier-price">3–8 weeks</div><p class="price-tier-desc">Custom sites, dashboards and SaaS products on modern stacks.</p></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="160"><div class="price-tier-card h-100"><div class="price-tier-icon"><i class="bi bi-phone"></i></div><div class="price-tier-name">Mobile Apps</div><div class="price-tier-price">8–16 weeks</div><p class="price-tier-desc">Cross-platform iOS and Android apps with backend and APIs.</p></div></div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="240"><div class="price-tier-card h-100"><div class="price-tier-icon"><i class="bi bi-buildings"></i></div><div class="price-tier-name">Enterprise Platforms</div><div class="price-tier-price">Phased</div><p class="price-tier-desc">Large-scale systems, integrations, cloud architecture and compliance.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-py" style="background:var(--tx-dark-2);border-top:1px solid rgba(255,255,255,.05)">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5" data-aos="fade-right">
+          <span class="section-tag"><i class="bi bi-check2-circle me-1"></i> Always Included</span><br />
+          <h2 class="section-title mt-3 text-start">Every project<br /><span class="gradient-accent">comes with this.</span></h2>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <ul class="about-check-list">
+            <li><i class="bi bi-check-circle-fill"></i>Mutual NDA signed before we discuss anything sensitive</li>
+            <li><i class="bi bi-check-circle-fill"></i>A detailed Software Requirements Specification you review and approve</li>
+            <li><i class="bi bi-check-circle-fill"></i>E-signed proposals and written approvals at every milestone</li>
+            <li><i class="bi bi-check-circle-fill"></i>Private client portal to track tasks, milestones and chat with the team</li>
+            <li><i class="bi bi-check-circle-fill"></i>Post-launch support and full source-code ownership on final payment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center" data-aos="fade-up">
+      <div class="cta-eyebrow">Get your number</div>
+      <h2 class="cta-mega">Get a custom quote<br />in 120 minutes.</h2>
+      <p class="cta-sub">Tell us what you need and we'll send an itemised, no-obligation proposal.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a class="btn-tx-white btn-magnetic" href="get-started.html">Get Started <i class="bi bi-arrow-right ms-1"></i></a>
+        <a class="btn-tx-outline" href="contact.html">Contact Sales</a>
+      </div>
+      <p class="cta-note"><i class="bi bi-shield-check me-1"></i> 100% free consultation. No spam. No pressure.</p>
+    </div>
+  </section>
+</main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="assets/js/packages.js"></script>
+<script>document.getElementById('packageCards').innerHTML = TX_PACKAGES('get-started.html');</script>
+</body>
+</html>

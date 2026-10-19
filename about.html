@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — Techablers</title>
+<meta name="description" content="Techablers is a full-service team of designers, developers and strategists. No outsourcing, no middlemen." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="about">
+<script src="assets/js/layout.js"></script>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div data-aos="fade-up"><span class="section-tag"><i class="bi bi-people me-1"></i> Who We Are</span></div>
+      <h1 class="page-hero-title mt-3" data-aos="fade-up" data-aos-delay="80">Not just an agency.<br /><span class="accent">A team invested<br />in your success.</span></h1>
+      <p class="page-hero-subtitle" data-aos="fade-up" data-aos-delay="160">Techablers is a full-service team of designers, developers and strategists. No outsourcing. No middlemen. Just focused, accountable delivery.</p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <section class="stats-bar"><div class="container"><div class="row g-4" id="statsRow"></div></div></section>
+
+  <section class="section-py">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="section-tag"><i class="bi bi-book me-1"></i> Our Story</span><br />
+          <h2 class="section-title mt-3 text-start">Built different.<br /><span class="gradient-accent">On purpose.</span></h2>
+          <p class="mt-4 mb-3">Techablers started because we kept meeting businesses that had been let down: agencies that over-promised, quietly outsourced the work and disappeared after launch.</p>
+          <p class="mb-4">So we built the opposite: one accountable team that owns your project from the first wireframe to post-launch support. You always know who is working on your product, and you can reach them directly.</p>
+          <ul class="about-check-list">
+            <li><i class="bi bi-check-circle-fill"></i>In-house design and engineering, no hidden subcontractors</li>
+            <li><i class="bi bi-check-circle-fill"></i>Transparent, itemised quotes with no hidden fees</li>
+            <li><i class="bi bi-check-circle-fill"></i>Real-time project tracking in your private client portal</li>
+            <li><i class="bi bi-check-circle-fill"></i>Long-term partnerships, not one-off transactions</li>
+            <li><i class="bi bi-check-circle-fill"></i>You own the source code. No lock-in, ever</li>
+          </ul>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="about-scene">
+            <div class="about-scene-float f1"><i class="bi bi-lightning-charge-fill"></i> Shipping daily</div>
+            <div class="about-scene-float f2"><i class="bi bi-people-fill"></i> <span id="teamFloat"></span>+ specialists</div>
+            <div class="scene-window">
+              <div class="scene-window-bar"><span class="code-dot code-dot-r"></span><span class="code-dot code-dot-y"></span><span class="code-dot code-dot-g"></span><span class="code-filename">team-board.tx</span></div>
+              <div class="scene-window-body">
+                <span class="scene-chip"><i class="bi bi-check-circle-fill me-1"></i>Sprint on track</span>
+                <div class="scene-row"><span class="scene-ava" style="background:#ff5c28">UX</span><span class="scene-bar w-90"></span></div>
+                <div class="scene-row"><span class="scene-ava" style="background:#0891b2">DEV</span><span class="scene-bar w-70"></span></div>
+                <div class="scene-row"><span class="scene-ava" style="background:#9333ea">QA</span><span class="scene-bar w-55"></span></div>
+                <div class="scene-row"><span class="scene-ava" style="background:#10b981">OPS</span><span class="scene-bar w-40"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="about-stat-strip" id="aboutStrip"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tech-stack-section">
+    <div class="container text-center">
+      <div data-aos="fade-up">
+        <span class="section-tag"><i class="bi bi-cpu me-1"></i> Our Tech Stack</span><br />
+        <h2 class="section-title mt-3">We build with<br /><span class="gradient-accent">best-in-class tools.</span></h2>
+        <p class="mt-3 mb-5 section-lead">Modern, scalable, proven technology on every project.</p>
+      </div>
+      <div class="tech-grid" id="techGrid"></div>
+    </div>
+  </section>
+
+  <section class="section-py">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-tag"><i class="bi bi-stars me-1"></i> Our Values</span><br />
+        <h2 class="section-title mt-3">What we<br /><span class="gradient-accent">stand for.</span></h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up"><div class="value-card"><div class="value-icon"><i class="bi bi-shield-check"></i></div><h3 class="why-title mt-3">Quality Without Compromise</h3><p class="why-desc mt-2">Every deliverable is tested, reviewed and production-ready before it reaches you. Your reputation is on the line, and we treat it like ours.</p></div></div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="value-card"><div class="value-icon"><i class="bi bi-eye"></i></div><h3 class="why-title mt-3">Radical Transparency</h3><p class="why-desc mt-2">You always know what is happening: regular updates, open communication and honest timelines. No surprises.</p></div></div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><div class="value-card"><div class="value-icon"><i class="bi bi-clock-history"></i></div><h3 class="why-title mt-3">Delivery You Can Count On</h3><p class="why-desc mt-2">We set realistic timelines and hit them. The client portal shows every milestone and every sprint as it happens.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-py" style="background:var(--tx-dark-2);border-top:1px solid rgba(255,255,255,.05)">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-tag"><i class="bi bi-diagram-3 me-1"></i> How We Operate</span><br />
+        <h2 class="section-title mt-3">Our process is<br /><span class="gradient-accent">your peace of mind.</span></h2>
+      </div>
+      <div class="row g-4 justify-content-center" id="opSteps"></div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center" data-aos="fade-up">
+      <div class="cta-eyebrow">Let's work together</div>
+      <h2 class="cta-mega">Ready to meet your<br />new tech team?</h2>
+      <p class="cta-sub">Free consultation. No commitment. Just an honest conversation about your project.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a class="btn-tx-white btn-magnetic" href="contact.html">Get In Touch <i class="bi bi-arrow-right ms-1"></i></a>
+        <a class="btn-tx-outline" href="portfolio.html">See Our Work</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+(function () {
+  var S = TX_SITE.stats;
+  document.getElementById('statsRow').innerHTML = [['rocket-takeoff', S.projects, '+', 'Projects Delivered'], ['emoji-smile', S.clients, '+', 'Happy Clients'], ['award', S.years, '+', 'Years Experience'], ['heart', S.satisfaction, '%', 'Client Satisfaction']]
+    .map(function (s) {
+      return '<div class="col-6 col-lg-3"><div class="stat-item"><div class="stat-icon"><i class="bi bi-' + s[0] + '"></i></div>' +
+        '<span class="stat-number" data-count="' + s[1] + '"><span class="num">0</span><span class="stat-suffix">' + s[2] + '</span></span><span class="stat-label">' + s[3] + '</span></div></div>';
+    }).join('');
+  document.getElementById('teamFloat').textContent = S.team;
+  document.getElementById('aboutStrip').innerHTML = [[S.team, '+', 'Team Members'], [S.countries, '+', 'Countries Served'], [S.rating, '★', 'Avg Rating'], ['100', '%', 'Code Ownership']]
+    .map(function (s) { return '<div class="about-stat-cell"><span class="about-stat-val">' + s[0] + '<span>' + s[1] + '</span></span><span class="about-stat-lbl">' + s[2] + '</span></div>'; }).join('');
+
+  var tech = [['filetype-cs', '.NET / C#'], ['filetype-js', 'JavaScript / TypeScript'], ['filetype-py', 'Python'], ['terminal', 'Go'], ['code', 'Java / Kotlin'], ['server', 'Node.js'], ['phone', 'Dart'], ['code-slash', 'React'], ['layout-text-window', 'Next.js'], ['app', 'Vue.js'], ['grid', 'Angular'], ['brush', 'Tailwind CSS'], ['grid-3x3-gap', 'Bootstrap'], ['phone-flip', 'Flutter'], ['apple', 'Swift / SwiftUI'], ['android2', 'Android / Kotlin'], ['columns-gap', 'React Native'], ['database', 'SQL Server'], ['database-fill', 'PostgreSQL'], ['circle-fill', 'MongoDB'], ['hdd-stack', 'Redis'], ['table', 'MySQL'], ['database-lock', 'Supabase'], ['lightning-fill', 'Firebase'], ['cloud', 'AWS'], ['cloud-fill', 'Azure'], ['cloud-arrow-up', 'Google Cloud'], ['box', 'Docker'], ['diagram-3', 'Kubernetes'], ['layers', 'Terraform'], ['arrow-repeat', 'GitHub Actions'], ['activity', 'Prometheus / Grafana'], ['robot', 'OpenAI'], ['stars', 'Claude (Anthropic)'], ['cpu', 'LangChain'], ['search', 'pgvector / Pinecone'], ['bar-chart', 'PyTorch / TensorFlow'], ['diagram-2', 'GraphQL'], ['plug', 'REST APIs'], ['credit-card', 'Stripe'], ['send', 'Twilio / SendGrid'], ['map', 'Google Maps API'], ['currency-bitcoin', 'Solidity'], ['link-45deg', 'ethers.js / wagmi'], ['git', 'Git / GitHub'], ['vector-pen', 'Figma'], ['bar-chart-line', 'Power BI'], ['shield-lock', 'OAuth 2.0 / JWT'], ['bug', 'Playwright'], ['speedometer', 'k6']];
+  document.getElementById('techGrid').innerHTML = tech.map(function (t) { return '<span class="tech-badge"><i class="bi bi-' + t[0] + '"></i>' + TX.esc(t[1]) + '</span>'; }).join('');
+
+  var steps = [['Discovery', 'We dig into your goals, users and constraints. No assumptions, just solid research.'], ['Strategy', 'We plan the architecture, tech stack and sprint roadmap before writing any code.'], ['Build', 'Agile sprints with regular check-ins. You see progress throughout, not just at the end.'], ['Launch', 'Deployment, QA and performance testing. We don\'t hand over until everything is solid.'], ['Support', 'Monitoring, fixes and new features after launch. We stay on as your long-term partner.']];
+  document.getElementById('opSteps').innerHTML = steps.map(function (s, i) {
+    return '<div class="col-6 col-md-4 col-lg" data-aos="fade-up" data-aos-delay="' + i * 80 + '"><div class="op-step"><div class="op-step-num">0' + (i + 1) + '</div><h4>' + s[0] + '</h4><p>' + s[1] + '</p></div></div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

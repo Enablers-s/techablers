@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Get Started — Techablers</title>
+<meta name="description" content="Describe your project. Our AI consultant asks the right questions and turns your idea into a clear brief." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="get-started">
+<script src="assets/js/layout.js"></script>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div data-aos="fade-up"><span class="section-tag"><i class="bi bi-robot me-1"></i> AI Requirement Gathering</span></div>
+      <h1 class="page-hero-title mt-3" data-aos="fade-up" data-aos-delay="80">Describe your project.<br /><span class="accent">We'll figure out the rest.</span></h1>
+      <p class="page-hero-subtitle" data-aos="fade-up" data-aos-delay="160">Chat with our AI consultant. It asks the right questions, works out what you need and writes a project brief for our team.</p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <section class="section-py" style="background:var(--tx-dark)">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="chat-card" data-aos="fade-up">
+            <div class="chat-head">
+              <div class="chat-avatar"><i class="bi bi-robot"></i></div>
+              <div><div class="chat-title">Techablers AI Consultant</div><div class="chat-status">Online — typically replies instantly</div></div>
+              <div class="chat-progress" aria-live="polite"><span id="progressLabel">Step 1 of 7</span><div class="chat-progress-track"><div class="chat-progress-fill" id="progressFill"></div></div></div>
+            </div>
+            <div class="chat-messages" id="messages" aria-live="polite"></div>
+            <div class="chat-input">
+              <div class="chat-row">
+                <textarea id="userMessage" rows="2" placeholder="Describe your project, ask a question..." aria-label="Your message"></textarea>
+                <label class="chat-attach" title="Attach a file"><i class="bi bi-paperclip"></i><input type="file" id="attachInput" hidden multiple /></label>
+                <button id="sendBtn" class="btn-tx-primary" style="padding:.75rem 1.25rem" aria-label="Send"><i class="bi bi-send" id="sendIcon"></i></button>
+              </div>
+              <div class="attach-list" id="attachList"></div>
+              <div class="chat-hint"><i class="bi bi-lock me-1"></i>Conversation is private. Attach mockups, specs or screenshots. Press Enter to send · Shift+Enter for a new line.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="assets/js/submit.js"></script>
+<script>
+(function () {
+  // Scripted requirements interview. To use a real LLM, replace askCurrent()/send()
+  // with calls to your own backend endpoint.
+  var messagesEl = document.getElementById('messages');
+  var ta = document.getElementById('userMessage');
+  var sendBtn = document.getElementById('sendBtn');
+  var sendIcon = document.getElementById('sendIcon');
+  var attachInput = document.getElementById('attachInput');
+  var attachList = document.getElementById('attachList');
+  var e = TX.esc, attachments = [];
+
+  var steps = [
+    { key: 'type', label: 'Project type',
+      ask: "Hi! I'm Techablers' AI consultant. I'm here to help you turn your idea into a clear project brief.\n\nTo get started, what kind of project are you looking to build? (e.g. a website, mobile app, software, AI solution, etc.)",
+      chips: ['Website', 'Mobile app', 'Custom software', 'AI solution', 'Not sure yet'] },
+    { key: 'goal', label: 'Goal',
+      ask: function (b) { return reactTo(b.type) + "\n\nWhat problem should it solve, or what's the main goal? A sentence or two is plenty."; } },
+    { key: 'features', label: 'Key features', multi: true,
+      ask: "Got it. What are the must-have features? Tap any that apply or type your own, separated by commas.",
+      chips: ['User accounts', 'Payments', 'Admin dashboard', 'Booking / scheduling', 'AI chat', 'Multi-language'] },
+    { key: 'audience', label: 'Audience',
+      ask: "Who will use it? For example your customers, internal staff, or a specific niche.",
+      chips: ['Consumers (B2C)', 'Businesses (B2B)', 'Internal team'] },
+    { key: 'timeline', label: 'Timeline',
+      ask: "When do you need it live?",
+      chips: ['ASAP (< 1 month)', '1–3 months', '3–6 months', 'Flexible'] },
+    { key: 'budget', label: 'Budget',
+      ask: "Do you have a budget range in mind? It helps us recommend the right approach.",
+      chips: ['Under $5k', '$5k–$15k', '$15k–$50k', '$50k+', 'Not sure'] },
+    { key: 'contact', label: 'Contact',
+      ask: "Last step: what's your name and email so our team can send your quote?\n(e.g. Sara, sara@company.com)",
+      validate: function (v) { return /[^\s@]+@[^\s@]+\.[^\s@]+/.test(v) ? null : "That doesn't look like it includes an email address. Could you add one so we can reach you?"; } }
+  ];
+  var brief = {}, step = 0, done = false, picks = [];
+
+  function reactTo(type) {
+    var t = (type || '').toLowerCase();
+    if (t.indexOf('mobile') > -1 || t.indexOf('app') > -1) return 'Great, an app. We build for iOS and Android, native or cross-platform.';
+    if (t.indexOf('web') > -1) return 'Nice, a website. We can do anything from a fast marketing site to a full web platform.';
+    if (t.indexOf('ai') > -1) return 'An AI project, good. We work with LLMs, automation and custom models.';
+    if (t.indexOf('software') > -1) return "Custom software, great. That's one of the things we do most.";
+    if (t.indexOf('not sure') > -1) return "No problem. Plenty of good projects start that way, and we'll help you work it out.";
+    return 'Sounds interesting.';
+  }
+  function scroll() { messagesEl.scrollTop = messagesEl.scrollHeight; }
+  function bubble(role, text) {
+    var w = document.createElement('div');
+    w.className = 'msg' + (role === 'user' ? ' user' : '');
+    w.innerHTML = '<div class="chat-avatar sm' + (role === 'user' ? ' user' : '') + '"><i class="bi bi-' + (role === 'user' ? 'person' : 'robot') + '"></i></div><div class="bubble">' + e(text).replace(/\n/g, '<br/>') + '</div>';
+    messagesEl.appendChild(w); scroll();
+  }
+  function clearChips() { messagesEl.querySelectorAll('.chips').forEach(function (c) { c.remove(); }); }
+  function showChips(s) {
+    if (!s.chips) return;
+    var row = document.createElement('div'); row.className = 'chips'; picks = [];
+    s.chips.forEach(function (label) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = label;
+      b.addEventListener('click', function () {
+        if (!s.multi) { ta.value = label; send(); return; }
+        var i = picks.indexOf(label);
+        if (i > -1) picks.splice(i, 1); else picks.push(label);
+        b.classList.toggle('picked', i === -1);
+        ta.value = picks.join(', '); ta.focus();
+      });
+      row.appendChild(b);
+    });
+    messagesEl.appendChild(row); scroll();
+  }
+  function typing(ms) {
+    return new Promise(function (resolve) {
+      var w = document.createElement('div'); w.className = 'msg';
+      w.innerHTML = '<div class="chat-avatar sm"><i class="bi bi-robot"></i></div><div class="bubble" style="color:#64748b;font-size:.85rem"><span class="dots"><span>●</span> <span>●</span> <span>●</span></span></div>';
+      messagesEl.appendChild(w); scroll();
+      setTimeout(function () { w.remove(); resolve(); }, ms);
+    });
+  }
+  function setProgress() {
+    document.getElementById('progressLabel').textContent = done ? 'Brief ready' : 'Step ' + Math.min(step + 1, steps.length) + ' of ' + steps.length;
+    document.getElementById('progressFill').style.width = (done ? 100 : step / steps.length * 100) + '%';
+  }
+  function setBusy(b) { sendBtn.disabled = b; sendIcon.className = b ? 'bi bi-hourglass-split' : 'bi bi-send'; }
+  function askCurrent() {
+    var s = steps[step], q = typeof s.ask === 'function' ? s.ask(brief) : s.ask;
+    return typing(600 + Math.min(q.length * 6, 900)).then(function () { bubble('assistant', q); showChips(s); setProgress(); });
+  }
+  function send() {
+    var msg = ta.value.trim();
+    if (!msg || sendBtn.disabled || done) return;
+    ta.value = ''; clearChips(); bubble('user', msg); setBusy(true);
+    var s = steps[step], err = s.validate && s.validate(msg);
+    if (err) { typing(700).then(function () { bubble('assistant', err); setBusy(false); ta.focus(); }); return; }
+    brief[s.key] = msg; step++;
+    if (step < steps.length) askCurrent().then(function () { setBusy(false); ta.focus(); });
+    else finish();
+  }
+  function briefFields() {
+    var f = {}; steps.forEach(function (s) { f[s.label] = brief[s.key]; });
+    if (attachments.length) f['Attachments (to be shared)'] = attachments.join(', ');
+    return f;
+  }
+  function briefText() {
+    var f = briefFields();
+    return '# Project Brief\n\n' + Object.keys(f).map(function (k) { return '**' + k + ':** ' + f[k]; }).join('\n');
+  }
+  function finish() {
+    done = true; setProgress();
+    typing(1300).then(function () {
+      bubble('assistant', "Thanks! Here's the brief I've put together. Send it to our team and we'll reply with a tailored quote within 120 minutes.");
+      var f = briefFields(), card = document.createElement('div');
+      card.className = 'brief-card';
+      card.innerHTML = '<h4><i class="bi bi-file-earmark-check me-1" style="color:#ff8c5a"></i> Your project brief</h4><dl>' +
+        Object.keys(f).map(function (k) { return '<dt>' + e(k) + '</dt><dd>' + e(f[k]) + '</dd>'; }).join('') + '</dl>' +
+        '<div class="brief-actions"><button class="btn-tx-primary" style="padding:.5rem 1.1rem;font-size:.82rem" data-act="send"><i class="bi bi-send"></i> Send to team</button>' +
+        '<button class="btn-mini" data-act="copy"><i class="bi bi-clipboard"></i> Copy</button>' +
+        '<button class="btn-mini" data-act="download"><i class="bi bi-download"></i> Download</button>' +
+        '<button class="btn-mini" data-act="restart"><i class="bi bi-arrow-counterclockwise"></i> Start over</button></div>';
+      card.addEventListener('click', function (ev) {
+        var b = ev.target.closest('[data-act]'); if (!b) return;
+        var act = b.dataset.act;
+        if (act === 'send') {
+          b.disabled = true;
+          TX_SUBMIT('AI project brief: ' + brief.type, f).then(function (how) {
+            bubble('assistant', how === 'sent' ? "Your brief has been sent. Our team will be in touch shortly!" : "Your email app should have opened with the brief filled in. Just press send and we'll be in touch.");
+            b.innerHTML = '<i class="bi bi-check-lg"></i> Sent';
+          }).catch(function () { b.disabled = false; TX.toast('Could not send. Please try again.'); });
+        }
+        if (act === 'copy') navigator.clipboard.writeText(briefText()).then(function () { TX.toast('Brief copied'); }, function () { TX.toast('Copy failed'); });
+        if (act === 'download') {
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(new Blob([briefText()], { type: 'text/markdown' }));
+          a.download = 'project-brief.md'; a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+        }
+        if (act === 'restart') restart();
+      });
+      messagesEl.appendChild(card); scroll();
+      ta.disabled = true; ta.placeholder = 'Brief complete. Send it to our team above.';
+      sendBtn.disabled = true; sendIcon.className = 'bi bi-check-lg';
+    });
+  }
+  function restart() {
+    brief = {}; step = 0; done = false; attachments = []; attachList.innerHTML = ''; messagesEl.innerHTML = '';
+    ta.disabled = false; ta.placeholder = 'Describe your project, ask a question...';
+    setBusy(true); askCurrent().then(function () { setBusy(false); });
+  }
+  attachInput.addEventListener('change', function () {
+    Array.prototype.forEach.call(attachInput.files, function (file) {
+      attachments.push(file.name);
+      var chip = document.createElement('span'); chip.innerHTML = '<i class="bi bi-paperclip"></i> ' + e(file.name);
+      attachList.appendChild(chip); bubble('user', '📎 ' + file.name);
+    });
+    attachInput.value = '';
+  });
+  ta.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); send(); } });
+  sendBtn.addEventListener('click', send);
+  setBusy(true); askCurrent().then(function () { setBusy(false); });
+})();
+</script>
+</body>
+</html>

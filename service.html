@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Service — Techablers</title>
+<meta name="description" content="Service details, what's included and a free quote from Techablers." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="services">
+<script src="assets/js/layout.js"></script>
+
+<main id="svcMain"></main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+(function () {
+  // Looks up ?s=<slug> in the catalogue; falls back to the first service
+  var slug = TX.param('s'), cat, svc;
+  TX_SERVICES.forEach(function (c) { c.items.forEach(function (s) { if (s.slug === slug) { cat = c; svc = s; } }); });
+  if (!svc) { cat = TX_SERVICES[0]; svc = cat.items[0]; }
+  var copy = TX_SERVICE_COPY[cat.id] || { about: '', included: [] };
+  var e = TX.esc;
+  document.title = svc.name + ' — Techablers';
+
+  var related = cat.items.filter(function (s) { return s.slug !== svc.slug; }).slice(0, 5);
+
+  document.getElementById('svcMain').innerHTML =
+    '<section class="svcd-hero"><div class="container"><div class="row g-5 align-items-center">' +
+      '<div class="col-lg-7" data-aos="fade-up">' +
+        '<nav class="svcd-breadcrumb"><a href="services.html">Services</a><span class="sep">/</span><a href="services.html#' + cat.id + '">' + e(cat.name) + '</a><span class="sep">/</span>' + e(svc.name) + '</nav>' +
+        '<h1 class="svcd-title">' + e(svc.name) + '</h1>' +
+        '<p class="svcd-lead">' + e(svc.desc) + '</p>' +
+        '<div class="svcd-meta"><span><i class="bi bi-clock"></i>From ' + svc.days + ' days</span><span><i class="bi bi-shield-check"></i>Satisfaction guaranteed</span><span><i class="bi bi-code-slash"></i>Full source ownership</span></div>' +
+      '</div>' +
+      '<div class="col-lg-5" data-aos="fade-up" data-aos-delay="120"><div class="svcd-pricecard">' +
+        '<div class="svcd-price-label">Custom-quoted</div><div class="svcd-price">Priced to your scope</div>' +
+        '<span class="svcd-price-badge">Free quote</span>' +
+        '<a class="btn-tx-primary w-100 justify-content-center mb-2" href="contact.html?service=' + encodeURIComponent(svc.name) + '">Get a Quote for This Service</a>' +
+        '<a class="btn-tx-outline w-100 justify-content-center mb-3" style="padding:.65rem 1rem;font-size:.9rem" href="get-started.html"><i class="bi bi-robot"></i> Describe it to our AI</a>' +
+        '<p class="svcd-note">Free quote · No obligation · 120-minute response</p>' +
+      '</div></div>' +
+    '</div></div></section>' +
+    '<hr class="section-divider" />' +
+    '<section class="section-py"><div class="container"><div class="row g-5">' +
+      '<div class="col-lg-8">' +
+        '<div class="mb-5" data-aos="fade-up"><h2 class="svcd-section-title">About This Service</h2><div class="legal-content"><p>' + e(copy.about) + '</p>' +
+          '<p>Typical delivery for <strong>' + e(svc.name) + '</strong> starts at ' + svc.days + ' days, depending on scope. You get a fixed, itemised quote before any work begins, and you own everything we build.</p></div></div>' +
+        '<div class="mb-5" data-aos="fade-up"><h2 class="svcd-section-title">What\'s Included</h2><div class="row g-3">' +
+          copy.included.map(function (f) { return '<div class="col-md-6"><div class="svcd-feature"><i class="bi bi-check-circle-fill"></i><span class="svcd-feature-name">' + e(f) + '</span></div></div>'; }).join('') +
+        '</div></div>' +
+      '</div>' +
+      '<div class="col-lg-4">' +
+        '<div class="svcd-pricecard text-center mb-4" data-aos="fade-up"><i class="bi bi-chat-dots" style="font-size:2rem;color:var(--tx-primary)"></i>' +
+          '<h3 class="svcd-section-title mt-3 mb-2">Have Questions?</h3><p class="mb-3">Our team is ready to discuss your project and give you a custom quote.</p>' +
+          '<a class="btn-tx-primary w-100 justify-content-center" href="contact.html">Talk to Our Team</a></div>' +
+        (related.length ? '<div class="svcd-pricecard" data-aos="fade-up"><h3 class="svcd-section-title" style="font-size:1.05rem">More in ' + e(cat.name) + '</h3>' +
+          related.map(function (s) { return '<a class="svcd-related" href="service.html?s=' + s.slug + '">' + e(s.name) + '<span>' + s.days + '-day delivery</span></a>'; }).join('') + '</div>' : '') +
+      '</div>' +
+    '</div></div></section>' +
+    '<section class="cta-section"><div class="container text-center"><div class="cta-eyebrow">Let\'s get started</div>' +
+      '<h2 class="cta-mega">Ready when<br />you are.</h2><p class="cta-sub">Free consultation. Custom quote within 120 minutes.</p>' +
+      '<a class="btn-tx-white btn-magnetic" href="contact.html?service=' + encodeURIComponent(svc.name) + '">Get a Free Quote <i class="bi bi-arrow-right ms-1"></i></a></div></section>';
+})();
+</script>
+</body>
+</html>

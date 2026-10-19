@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Techablers</title>
+<meta name="description" content="Tell us about your project. Free quote within 120 minutes, no commitment." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="contact">
+<script src="assets/js/layout.js"></script>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div data-aos="fade-up"><span class="section-tag"><i class="bi bi-chat-dots me-1"></i> Let's Talk</span></div>
+      <h1 class="page-hero-title mt-3" data-aos="fade-up" data-aos-delay="80">Tell us about<br /><span class="accent">your project.</span></h1>
+      <p class="page-hero-subtitle" data-aos="fade-up" data-aos-delay="160">Free quote within 120 minutes. No commitment, no pressure. Just an honest conversation about what you need.</p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <section class="section-py" style="background:var(--tx-dark-2)">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4" data-aos="fade-right">
+          <div class="mb-4"><h2 style="color:#f1f5f9;font-weight:800;font-size:1.5rem">Get In Touch</h2><p>We respond to all enquiries within 120 minutes during business hours.</p></div>
+          <div class="d-flex flex-column gap-3" id="infoCards"></div>
+          <div class="mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,.07)">
+            <p class="trusted-label">Trusted by teams at</p>
+            <span class="trusted-pill">Startups</span><span class="trusted-pill">SMBs</span><span class="trusted-pill">Enterprises</span><span class="trusted-pill">NGOs</span>
+          </div>
+        </div>
+        <div class="col-lg-8" data-aos="fade-left">
+          <div class="contact-form-card">
+            <div id="formWrap">
+              <h2><i class="bi bi-send me-2" style="color:var(--tx-primary)"></i>Send Us a Message</h2>
+              <form id="contactForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6"><div class="tx-field"><input class="form-control" id="firstName" name="First name" placeholder=" " required /><label for="firstName">First Name *</label></div><span class="field-error"></span></div>
+                  <div class="col-md-6"><div class="tx-field"><input class="form-control" id="lastName" name="Last name" placeholder=" " required /><label for="lastName">Last Name *</label></div><span class="field-error"></span></div>
+                  <div class="col-md-6"><div class="tx-field"><input class="form-control" type="email" id="email" name="Email" placeholder=" " required /><label for="email">Email Address *</label></div><span class="field-error"></span></div>
+                  <div class="col-md-6"><div class="tx-field"><input class="form-control" type="tel" id="phone" name="Phone" placeholder=" " /><label for="phone">Phone Number</label></div></div>
+                  <div class="col-md-6"><div class="tx-field"><input class="form-control" id="company" name="Company" placeholder=" " /><label for="company">Company / Organisation</label></div></div>
+                  <div class="col-md-6"><div class="tx-field"><select class="form-select" id="budget" name="Budget">
+                    <option value="">Select budget range...</option><option>Under $1,000</option><option>$1,000 – $5,000</option><option>$5,000 – $15,000</option><option>$15,000 – $50,000</option><option>$50,000+</option>
+                  </select><label for="budget">Budget Range</label></div></div>
+                  <div class="col-12"><div class="tx-field"><input class="form-control" id="service" name="Service interest" placeholder=" " list="serviceList" /><label for="service">Service Interest (e.g. Mobile App, SaaS)</label></div><datalist id="serviceList"></datalist></div>
+                  <div class="col-12"><div class="tx-field"><textarea class="form-control" id="message" name="Message" placeholder=" " required></textarea><label for="message">Tell us about your project *</label></div><span class="field-error"></span></div>
+                </div>
+                <button type="submit" class="btn-tx-primary btn-magnetic mt-4" id="sendBtn"><i class="bi bi-send me-1"></i> Send Message</button>
+                <p class="mt-3 mb-0" style="font-size:.8rem;color:#475569"><i class="bi bi-lock me-1"></i>Your information is secure and never shared with third parties.</p>
+              </form>
+            </div>
+            <div class="form-success" id="formSuccess">
+              <i class="bi bi-check-circle-fill"></i>
+              <h3>Message ready!</h3>
+              <p id="successText">Thanks for reaching out. Our team will reply within 120 minutes.</p>
+              <button type="button" class="btn-tx-ghost mt-2" id="againBtn">Send another message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="assets/js/submit.js"></script>
+<script>
+(function () {
+  var S = TX_SITE, e = TX.esc;
+  document.getElementById('infoCards').innerHTML =
+    '<a class="contact-info-card" href="mailto:' + e(S.email) + '"><div class="contact-info-icon"><i class="bi bi-envelope"></i></div><div><div class="contact-info-title">Email Us</div><p class="contact-info-text">' + e(S.email) + '</p></div></a>' +
+    '<a class="contact-info-card" href="tel:' + e(S.phoneHref) + '"><div class="contact-info-icon"><i class="bi bi-telephone"></i></div><div><div class="contact-info-title">Call Us</div><p class="contact-info-text">' + e(S.phone) + '<br />' + e(S.hours) + '</p></div></a>' +
+    '<div class="contact-info-card"><div class="contact-info-icon"><i class="bi bi-geo-alt"></i></div><div><div class="contact-info-title">Location</div><p class="contact-info-text">' + e(S.location) + '</p></div></div>' +
+    '<div class="contact-info-card"><div class="contact-info-icon"><i class="bi bi-check-circle"></i></div><div><div class="contact-info-title">Free Consultation</div><p class="contact-info-text">No charge, no obligation.<br />Quote within 120 minutes.</p></div></div>';
+
+  var list = document.getElementById('serviceList');
+  TX_SERVICES.forEach(function (c) { c.items.forEach(function (s) { var o = document.createElement('option'); o.value = s.name; list.appendChild(o); }); });
+  var pre = TX.param('service'); if (pre) document.getElementById('service').value = pre;
+
+  var form = document.getElementById('contactForm');
+  function validate() {
+    var ok = true;
+    form.querySelectorAll('[required]').forEach(function (f) {
+      var err = f.closest('[class*="col-"]').querySelector('.field-error');
+      var msg = !f.value.trim() ? 'This field is required.' : (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value) ? 'Please enter a valid email address.' : '');
+      f.parentNode.classList.toggle('is-invalid', !!msg);
+      if (err) err.textContent = msg;
+      if (msg) ok = false;
+    });
+    return ok;
+  }
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (!validate()) { form.querySelector('.is-invalid input, .is-invalid textarea').focus(); return; }
+    var data = {};
+    form.querySelectorAll('[name]').forEach(function (f) { if (f.value.trim()) data[f.name] = f.value.trim(); });
+    var btn = document.getElementById('sendBtn'); btn.disabled = true;
+    TX_SUBMIT('New enquiry from ' + data['First name'] + ' ' + data['Last name'], data).then(function (how) {
+      document.getElementById('successText').textContent = how === 'sent'
+        ? 'Thanks for reaching out. Our team will reply within 120 minutes.'
+        : 'Your email app should have opened with your message filled in. Just press send and we will reply within 120 minutes.';
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+    }).catch(function () { TX.toast('Could not send. Please email us directly.'); }).finally(function () { btn.disabled = false; });
+  });
+  document.getElementById('againBtn').addEventListener('click', function () {
+    form.reset();
+    document.getElementById('formSuccess').classList.remove('show');
+    document.getElementById('formWrap').style.display = '';
+  });
+})();
+</script>
+</body>
+</html>

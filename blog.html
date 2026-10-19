@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog — Techablers</title>
+<meta name="description" content="Insights on AI, software engineering, web platforms, cloud and security from the Techablers team." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="blog">
+<script src="assets/js/layout.js"></script>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div data-aos="fade-up"><span class="section-tag"><i class="bi bi-newspaper me-1"></i> Insights</span></div>
+      <h1 class="page-hero-title mt-3" data-aos="fade-up" data-aos-delay="80">Ideas, trends,<br /><span class="accent">and hard-won lessons.</span></h1>
+      <p class="page-hero-subtitle" data-aos="fade-up" data-aos-delay="160">Practical insights from people who build technology every day: AI, software engineering, web platforms, cloud, security and automation.</p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+  <section class="section-py">
+    <div class="container">
+      <div class="row g-4" id="blogGrid"></div>
+      <div class="tx-pagination" id="pager"></div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center" data-aos="fade-up">
+      <div class="cta-eyebrow">Have a project in mind?</div>
+      <h2 class="cta-mega">Stop reading. Start building.</h2>
+      <p class="cta-sub">Free consultation. Custom quote within 120 minutes.</p>
+      <a class="btn-tx-white btn-magnetic" href="contact.html">Get a Free Quote <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+  </section>
+</main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+(function () {
+  var e = TX.esc, PER = 6, page = 1, pages = Math.max(1, Math.ceil(TX_BLOG.length / PER));
+  function render() {
+    document.getElementById('blogGrid').innerHTML = TX_BLOG.slice((page - 1) * PER, page * PER).map(function (p) {
+      return '<div class="col-md-6 col-lg-4"><a class="blog-card" href="post.html?p=' + p.slug + '">' +
+        '<div class="blog-card-img"><img src="' + p.img + '" alt="" loading="lazy" /></div>' +
+        '<div class="blog-card-body">' + (p.tag ? '<span class="blog-card-tag">' + e(p.tag) + '</span>' : '') +
+        '<h3 class="blog-card-title">' + e(p.title) + '</h3><p class="blog-card-excerpt">' + e(p.excerpt) + '</p>' +
+        '<div class="blog-card-meta"><span>' + e(p.author) + '</span><span>' + e(p.date) + '</span></div></div></a></div>';
+    }).join('');
+    document.getElementById('pager').innerHTML = pages < 2 ? '' :
+      '<button data-go="-1"' + (page === 1 ? ' disabled' : '') + '>‹ Prev</button><button disabled>Page ' + page + ' of ' + pages + '</button><button data-go="1"' + (page === pages ? ' disabled' : '') + '>Next ›</button>';
+  }
+  document.getElementById('pager').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-go]'); if (!b) return;
+    page += +b.dataset.go; render(); window.scrollTo({ top: 300, behavior: 'smooth' });
+  });
+  render();
+})();
+</script>
+</body>
+</html>

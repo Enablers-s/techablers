@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Careers — Techablers</title>
+<meta name="description" content="Join Techablers: build real products with a real team." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/content-data.js"></script>
+<script src="assets/js/services-data.js"></script>
+</head>
+<body data-page="careers">
+<script src="assets/js/layout.js"></script>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div data-aos="fade-up"><span class="section-tag"><i class="bi bi-briefcase me-1"></i> Careers</span></div>
+      <h1 class="page-hero-title mt-3" data-aos="fade-up" data-aos-delay="80">Build real things.<br /><span class="accent">With a real team.</span></h1>
+      <p class="page-hero-subtitle" data-aos="fade-up" data-aos-delay="160">We're an in-house team of engineers, designers and strategists shipping production software for clients. No busywork, just craft.</p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <section class="section-py">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-tag"><i class="bi bi-heart me-1"></i> Why Techablers</span><br />
+        <h2 class="section-title mt-3">A place where<br /><span class="gradient-accent">good engineers thrive.</span></h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up"><div class="value-card"><div class="value-icon"><i class="bi bi-people"></i></div><h3 class="why-title mt-3">One Tight Team</h3><p class="why-desc mt-2">Work alongside the people who actually build the product. No outsourcing layers, just a team that owns its work end to end.</p></div></div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="value-card"><div class="value-icon"><i class="bi bi-globe"></i></div><h3 class="why-title mt-3">Real Products, Real Impact</h3><p class="why-desc mt-2">What you ship goes live for paying clients. You see your work used in the real world, not buried in a backlog.</p></div></div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><div class="value-card"><div class="value-icon"><i class="bi bi-graph-up-arrow"></i></div><h3 class="why-title mt-3">Grow Fast</h3><p class="why-desc mt-2">Modern stacks, real ownership and mentoring from senior engineers. We invest in your skills and give you room to lead.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-py pt-0">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-tag"><i class="bi bi-clipboard-check me-1"></i> Open Roles</span><br />
+        <h2 class="section-title mt-3">We're hiring<br /><span class="gradient-accent">across the team.</span></h2>
+      </div>
+      <div class="row g-4" id="roles"></div>
+      <p class="text-center mt-4">Don't see your role? We're always glad to meet great people. Email <a id="careersMail" style="color:var(--tx-primary-light)"></a> with your portfolio.</p>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center" data-aos="fade-up">
+      <div class="cta-eyebrow">Join us</div>
+      <h2 class="cta-mega">Think you'd be<br />a great fit?</h2>
+      <p class="cta-sub">Send us your portfolio and a note about what you'd love to build.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a class="btn-tx-white btn-magnetic" id="careersCta">Email Us <i class="bi bi-arrow-right ms-1"></i></a>
+        <a class="btn-tx-outline" href="about.html">About Techablers</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>TX.footer()</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+(function () {
+  var mail = TX_SITE.email;
+  function mailto(subject) { return 'mailto:' + mail + '?subject=' + encodeURIComponent(subject); }
+  var roles = [
+    ['robot', 'AI Engineer', 'Artificial Intelligence', 'Design and ship AI features end to end: LLM integrations, RAG pipelines, agents and tooling. Take client problems from prototype to production with Python and vector stores.'],
+    ['code-slash', 'Full-Stack Developer', 'Engineering', 'Build web apps across the stack with React or Next.js on the front end and Node.js or .NET on the back end. Care about clean code, tests and good UX.'],
+    ['phone', 'Mobile Developer (Flutter)', 'Mobile', 'Ship cross-platform iOS and Android apps with Flutter, integrate APIs and payments, and take apps through store review to launch.'],
+    ['palette', 'UI/UX Designer', 'Design', 'Turn requirements into flows, wireframes and polished interfaces in Figma. Build and maintain design systems that developers love to work from.']
+  ];
+  document.getElementById('roles').innerHTML = roles.map(function (r, i) {
+    return '<div class="col-md-6" data-aos="fade-up" data-aos-delay="' + (i % 2) * 100 + '"><div class="role-card h-100">' +
+      '<div class="role-card-head"><div class="role-card-icon"><i class="bi bi-' + r[0] + '"></i></div><div><h3 class="role-card-title">' + r[1] + '</h3>' +
+      '<div class="role-card-meta"><span><i class="bi bi-diagram-2 me-1"></i>' + r[2] + '</span><span><i class="bi bi-geo-alt me-1"></i>Remote / Hybrid</span></div></div></div>' +
+      '<p class="role-card-desc">' + r[3] + '</p>' +
+      '<a class="btn-tx-ghost w-100 justify-content-center" href="' + mailto('Application: ' + r[1]) + '">Apply via ' + mail + ' <i class="bi bi-envelope ms-1"></i></a></div></div>';
+  }).join('');
+  var m = document.getElementById('careersMail'); m.href = mailto('Careers'); m.textContent = mail;
+  document.getElementById('careersCta').href = mailto('Careers');
+})();
+</script>
+</body>
+</html>
