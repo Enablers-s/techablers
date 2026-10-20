@@ -9,14 +9,9 @@
 (function () {
   var S = window.TX_SITE || {};
   var page = document.body.getAttribute('data-page') || '';
-  var markId = 0;
-
+  // The Techablers star (assets/img/brand/); decorative, since the name always sits beside it
   function brandMark(cls) {
-    var id = 'txg' + (++markId);
-    return '<svg class="' + (cls || 'brand-mark') + '" viewBox="0 0 32 32" fill="none" aria-hidden="true">' +
-      '<defs><linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8c5a"/><stop offset=".55" stop-color="#ff5c28"/><stop offset="1" stop-color="#e0431a"/></linearGradient></defs>' +
-      '<rect x="2" y="2" width="28" height="28" rx="8" stroke="url(#' + id + ')" stroke-width="3"/>' +
-      '<path d="M10 10h12M16 10v12" stroke="url(#' + id + ')" stroke-width="3.2" stroke-linecap="round"/></svg>';
+    return '<img class="' + (cls || 'brand-mark') + '" src="assets/img/brand/techablers-mark.webp" alt="" width="160" height="160" />';
   }
   function brand() { return '<a class="brand" href="index.html" aria-label="Techablers home">' + brandMark() + '<span class="brand-name">Tech<b>ablers</b></span></a>'; }
 

@@ -2,6 +2,22 @@
 
 Static multi-page site (HTML + Bootstrap 5.3 + AOS). No build step: open `index.html` in a browser, or upload the whole folder to any static host (Vercel, Netlify, cPanel, S3).
 
+## Folder structure
+```
+techablers/
+├── *.html                  pages (kept at the root so URLs stay short and links between pages work)
+├── favicon.ico             browser tab icon (browsers look for it at the root)
+├── apple-touch-icon.png    iPhone/iPad home-screen icon
+└── assets/
+    ├── css/style.css       all styling
+    ├── js/                 shared layout, site content, service catalogue, forms
+    └── img/brand/          Techablers star logo
+        ├── techablers-mark.webp     header, footer and sign-in pages
+        ├── techablers-mark-512.png  large mark for social posts and documents
+        ├── favicon-48.png           PNG tab icon
+        └── source/techablers-logo.png  original artwork (1600×1600)
+```
+
 ## Pages
 | Page | File |
 |---|---|
